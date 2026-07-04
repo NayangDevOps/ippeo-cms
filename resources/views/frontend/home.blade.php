@@ -1,0 +1,197 @@
+@extends('layouts.frontend')
+
+@section('title', 'Home')
+
+@section('content')
+<!-- Hero Slider -->
+<section class="hero-slider">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach($banners as $index => $banner)
+            <div class="carousel-item {{ $index === 0 ? 'active' : '' }}" style="background-image: url('{{ $banner->image_url }}'); height: 500px; background-size: cover; background-position: center;">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>{{ $banner->title }}</h1>
+                        <p>{{ $banner->subtitle }}</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Shop by Category</h2>
+        <p class="section-subtitle">Discover our range of natural beauty products</p>
+        <div class="row g-4">
+            @foreach($categories as $category)
+            <div class="col-md-4">
+                <a href="{{ route('categories.show', $category->slug) }}" class="text-decoration-none">
+                    <div class="category-card">
+                        <img src="{{ $category->image_url }}" alt="{{ $category->name }}">
+                        <div class="category-overlay">
+                            <h4>{{ $category->name }}</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title">Featured Products</h2>
+        <p class="section-subtitle">Handpicked favorites just for you</p>
+        <div class="row g-4">
+            @foreach($featuredProducts as $product)
+            <div class="col-md-3 col-sm-6">
+                <div class="product-card">
+                    <div class="product-image">
+                        @if($product->isOnSale())
+                        <span class="product-badge">Sale {{ $product->discount_percentage }}%</span>
+                        @elseif($product->is_new)
+                        <span class="product-badge">New</span>
+                        @endif
+                        <img src="{{ $product->featured_image_url }}" alt="{{ $product->name }}">
+                    </div>
+                    <div class="product-body">
+                        <div class="product-category">{{ $product->category->name }}</div>
+                        <h5 class="product-title">{{ $product->name }}</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="product-price">
+                                ₹{{ number_format($product->current_price, 2) }}
+                                @if($product->isOnSale())
+                                <span class="product-price-old">₹{{ number_format($product->price, 2) }}</span>
+                                @endif
+                            </div>
+                            <div class="product-rating">
+                                @for($i = 1; $i <= 5; $i++)
+                                    <i class="fas fa-star{{ $i <= $product->rating ? '' : '-o' }}"></i>
+                                @endfor
+                            </div>
+                        </div>
+                        <a href="{{ route('products.show', $product->slug) }}" class="btn btn-green w-100 mt-3">View Details</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <div class="text-center mt-5">
+            <a href="{{ route('products.index') }}" class="btn btn-green btn-lg px-5">View All Products</a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+@if($aboutSection)
+<section class="py-5 bg-green-lightest">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                @if($aboutSection->image)
+                <img src="{{ $aboutSection->image_url }}" alt="{{ $aboutSection->title }}" class="img-fluid rounded shadow">
+                @endif
+            </div>
+            <div class="col-md-6">
+                <h2 class="section-title text-start">{{ $aboutSection->title }}</h2>
+                <p class="section-subtitle text-start">{{ $aboutSection->subtitle }}</p>
+                <p>{{ $aboutSection->content }}</p>
+                @if($aboutSection->button_text && $aboutSection->button_link)
+                <a href="{{ $aboutSection->button_link }}" class="btn btn-green">{{ $aboutSection->button_text }}</a>
+                @endif
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+
+<!-- New Arrivals -->
+@if($newProducts->count() > 0)
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title">New Arrivals</h2>
+        <p class="section-subtitle">Fresh products, just arrived</p>
+        <div class="row g-4">
+            @foreach($newProducts->take(4) as $product)
+            <div class="col-md-3 col-sm-6">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="product-badge">New</span>
+                        <img src="{{ $product->featured_image_url }}" alt="{{ $product->name }}">
+                    </div>
+                    <div class="product-body">
+                        <div class="product-category">{{ $product->category->name }}</div>
+                        <h5 class="product-title">{{ $product->name }}</h5>
+                        <div class="product-price">₹{{ number_format($product->current_price, 2) }}</div>
+                        <a href="{{ route('products.show', $product->slug) }}" class="btn btn-green w-100 mt-3">View Details</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+
+<!-- Testimonials -->
+@if($testimonials->count() > 0)
+<section class="py-5 bg-cream">
+    <div class="container">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">Real reviews from real people</p>
+        <div class="row g-4">
+            @foreach($testimonials->take(3) as $testimonial)
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <img src="{{ $testimonial->image_url }}" alt="{{ $testimonial->name }}" class="testimonial-avatar">
+                    <p class="testimonial-text">"{{ $testimonial->testimonial }}"</p>
+                    <p class="testimonial-author">{{ $testimonial->name }}</p>
+                    @if($testimonial->position)
+                    <p class="small text-muted">{{ $testimonial->position }}</p>
+                    @endif
+                    <div class="testimonial-rating">
+                        @for($i = 1; $i <= 5; $i++)
+                            <i class="fas fa-star{{ $i <= $testimonial->rating ? '' : '-o' }}"></i>
+                        @endfor
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+
+<!-- Newsletter Section -->
+<section class="py-5 bg-green text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h3 class="fw-bold">Subscribe to Our Newsletter</h3>
+                <p>Get special offers and beauty tips delivered to your inbox</p>
+            </div>
+            <div class="col-md-6">
+                <form action="{{ route('newsletter.subscribe') }}" method="POST">
+                    @csrf
+                    <div class="input-group input-group-lg">
+                        <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                        <button class="btn btn-green-light" type="submit">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection

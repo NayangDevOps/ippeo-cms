@@ -1,0 +1,9 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#fff3e0"/>
+  <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#ff9800">Category</text>
+  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ffb74d">Placeholder</text>
+  <rect x="120" y="140" width="60" height="60" fill="none" stroke="#ff9800" stroke-width="2"/>
+  <rect x="200" y="140" width="60" height="60" fill="none" stroke="#ff9800" stroke-width="2"/>
+  <rect x="120" y="220" width="60" height="60" fill="none" stroke="#ff9800" stroke-width="2"/>
+  <rect x="200" y="220" width="60" height="60" fill="none" stroke="#ff9800" stroke-width="2"/>
+</svg>
