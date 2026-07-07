@@ -5,24 +5,32 @@
 @section('content')
 <!-- Hero Slider -->
 <section class="hero-slider">
-    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-pause="false">
+        <div class="carousel-indicators">
             @foreach($banners as $index => $banner)
-            <div class="carousel-item {{ $index === 0 ? 'active' : '' }}" style="background-image: url('{{ $banner->image_url }}'); height: 500px; background-size: cover; background-position: center;">
-                <div class="container">
-                    <div class="hero-content">
-                        <h1>{{ $banner->title }}</h1>
-                        <p>{{ $banner->subtitle }}</p>
-                    </div>
-                </div>
-            </div>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}"></button>
             @endforeach
         </div>
+        <div class="carousel-inner">
+            @forelse($banners as $index => $banner)
+            <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                <div class="banner-slide" @if($banner->image_url) style="background-image: url('{{ $banner->image_url }}');" @endif>
+                </div>
+            </div>
+            @empty
+            <div class="carousel-item active">
+                <div class="banner-slide" style="background: #f8f9fa;">
+                </div>
+            </div>
+            @endforelse
+        </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
         </button>
     </div>
 </section>
@@ -35,7 +43,7 @@
         <div class="row g-4">
             @foreach($categories as $category)
             <div class="col-md-4">
-                <a href="{{ route('categories.show', $category->slug) }}" class="text-decoration-none">
+                <a href="{{ route('products.index', ['category' => $category->id]) }}" class="text-decoration-none">
                     <div class="category-card">
                         <img src="{{ $category->image_url }}" alt="{{ $category->name }}">
                         <div class="category-overlay">
@@ -195,3 +203,19 @@
     </div>
 </section>
 @endsection
+
+@push('scripts')
+<script>
+(function() {
+    var carousel = document.getElementById('heroCarousel');
+    if (!carousel) return;
+
+    var heroCarousel = new bootstrap.Carousel(carousel, {
+        interval: 4000,
+        ride: 'carousel',
+        pause: 'hover',
+        wrap: true
+    });
+})();
+</script>
+@endpush

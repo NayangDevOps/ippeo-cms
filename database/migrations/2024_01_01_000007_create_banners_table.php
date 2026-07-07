@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('subtitle')->nullable();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('link')->nullable();
             $table->string('button_text')->nullable();
             $table->enum('position', ['home_slider', 'home_banner', 'sidebar'])->default('home_slider');

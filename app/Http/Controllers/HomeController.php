@@ -18,9 +18,9 @@ class HomeController extends Controller
             ->orderBy('order')
             ->get();
 
-        // Get categories
+        // Get subcategories with products
         $categories = Category::where('is_active', true)
-            ->whereNull('parent_id')
+            ->whereNotNull('parent_id')
             ->orderBy('order')
             ->take(6)
             ->get();

@@ -15,6 +15,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="{{ asset('storage/settings/site-favicon.webp') }}">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -31,8 +34,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <small><i class="fas fa-envelope me-2"></i>{{ App\Models\SiteSetting::get('contact_email', 'info@cosmetic.com') }}</small>
-                        <small class="ms-3"><i class="fas fa-phone me-2"></i>{{ App\Models\SiteSetting::get('contact_phone', '+1 234 567 890') }}</small>
+                        <small><i class="fas fa-envelope me-2"></i><a href="mailto:{{ App\Models\SiteSetting::get('contact_email', 'info@ippeo.in') }}" class="text-white text-decoration-none">{{ App\Models\SiteSetting::get('contact_email', 'info@ippeo.in') }}</a></small>
+                        <small class="ms-3"><i class="fas fa-phone me-2"></i><a href="tel:{{ App\Models\SiteSetting::get('contact_phone', '+917498686978') }}" class="text-white text-decoration-none">{{ App\Models\SiteSetting::get('contact_phone', '+91 74986 86978') }}</a></small>
                     </div>
                     <div class="col-md-6 text-end">
                         <a href="#" class="text-white me-2"><i class="fab fa-facebook"></i></a>
@@ -48,7 +51,12 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand fw-bold text-green" href="{{ route('home') }}">
-                    <i class="fas fa-leaf me-2"></i>{{ config('app.name') }}
+                    @php $logo = App\Models\SiteSetting::get('site_logo'); @endphp
+                    @if($logo)
+                        <img src="{{ asset('storage/'.$logo) }}" alt="{{ config('app.name') }}" height="100" width="150" class="me-2">
+                    @else
+                        <i class="fas fa-leaf me-2"></i>{{ config('app.name') }}
+                    @endif
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
