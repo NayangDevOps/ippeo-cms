@@ -6,7 +6,7 @@
     <title>@yield('title', 'Dashboard') - {{ config('app.name') }} Admin</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/webp" href="{{ asset('storage/settings/site-favicon.webp') }}">
+    <link rel="icon" type="image/webp" href="{{ asset('storage/settings/site-favicon.png') }}">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
