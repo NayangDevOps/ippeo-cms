@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="600" viewBox="0 0 1920 600">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#e8f5e9"/>
+    </linearGradient>
+    <linearGradient id="botanicalOverlay" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2d6a4f;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#52b788;stop-opacity:0.03"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1920" height="600" fill="url(#bg3)"/>
+  <rect width="1920" height="600" fill="url(#botanicalOverlay)"/>
+  <!-- Left botanical art -->
+  <g opacity="0.12">
+    <path d="M0,600 Q100,400 0,200 Q150,350 80,600Z" fill="#2d6a4f"/>
+    <path d="M50,600 Q200,450 120,300 Q250,450 200,600Z" fill="#52b788"/>
+    <path d="M-20,550 Q80,380 30,220 Q120,360 60,550Z" fill="#95d5b2"/>
+  </g>
+  <!-- Right botanical art -->
+  <g opacity="0.1">
+    <path d="M1920,600 Q1820,400 1920,200 Q1770,350 1840,600Z" fill="#2d6a4f"/>
+    <path d="M1870,600 Q1720,450 1800,300 Q1670,450 1720,600Z" fill="#52b788"/>
+  </g>
+  <!-- Center - minimal content -->
+  <!-- Brand with leaf -->
+  <g transform="translate(760,130)">
+    <path d="M0,25 Q15,0 35,10 Q25,30 10,40 Q5,35 0,25Z" fill="#2d6a4f"/>
+    <path d="M-5,35 Q10,15 30,25 Q20,45 5,55 Q0,50 -5,35Z" fill="#52b788"/>
+  </g>
+  <text x="800" y="190" font-family="'Playfair Display', 'Georgia', serif" font-size="20" fill="#52b788" letter-spacing="6" text-anchor="middle">IPPEO</text>
+  <text x="800" y="250" font-family="'Playfair Display', 'Georgia', serif" font-size="56" font-weight="700" fill="#1b4332" text-anchor="middle">Organic Essentials</text>
+  <text x="800" y="310" font-family="'Poppins', 'Arial', sans-serif" font-size="18" fill="#2d6a4f" text-anchor="middle" letter-spacing="1">Pure. Natural. Effective.</text>
+  <line x1="720" y1="340" x2="880" y2="340" stroke="#d4af37" stroke-width="1.5" opacity="0.6"/>
+  <text x="800" y="380" font-family="'Poppins', 'Arial', sans-serif" font-size="14" fill="#718096" text-anchor="middle">Handcrafted with organic botanicals for your daily wellness</text>
+  <!-- CTA buttons -->
+  <rect x="700" y="420" width="180" height="48" rx="24" fill="#2d6a4f"/>
+  <text x="790" y="450" font-family="'Poppins', 'Arial', sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">Shop Now</text>
+  <rect x="920" y="420" width="180" height="48" rx="24" fill="none" stroke="#2d6a4f" stroke-width="2"/>
+  <text x="1010" y="450" font-family="'Poppins', 'Arial', sans-serif" font-size="14" font-weight="600" fill="#2d6a4f" text-anchor="middle">Learn More</text>
+  <!-- Bottom decorative wave -->
+  <path d="M0,580 Q200,540 400,570 Q600,600 800,565 Q1000,530 1200,570 Q1400,610 1600,565 Q1800,520 1920,570 L1920,600 L0,600Z" fill="#2d6a4f" opacity="0.05"/>
+  <!-- Product line at bottom -->
+  <g transform="translate(520,480)" opacity="0.15">
+    <rect x="0" y="10" width="30" height="80" rx="8" fill="#2d6a4f"/>
+    <rect x="50" y="5" width="25" height="85" rx="7" fill="#52b788"/>
+    <rect x="95" y="15" width="28" height="75" rx="8" fill="#2d6a4f"/>
+    <rect x="145" y="8" width="22" height="82" rx="6" fill="#95d5b2"/>
+    <rect x="190" y="12" width="30" height="78" rx="8" fill="#52b788"/>
+    <rect x="240" y="5" width="25" height="85" rx="7" fill="#2d6a4f"/>
+    <rect x="285" y="15" width="28" height="75" rx="8" fill="#52b788"/>
+    <rect x="335" y="8" width="22" height="82" rx="6" fill="#95d5b2"/>
+    <rect x="380" y="10" width="30" height="80" rx="8" fill="#2d6a4f"/>
+  </g>
+  <!-- Floating leaves -->
+  <g fill="#95d5b2" opacity="0.08">
+    <ellipse cx="650" cy="150" rx="30" ry="12" transform="rotate(-30,650,150)"/>
+    <ellipse cx="1300" cy="480" rx="25" ry="10" transform="rotate(25,1300,480)"/>
+    <ellipse cx="350" cy="450" rx="20" ry="8" transform="rotate(-15,350,450)"/>
+    <ellipse cx="1550" cy="160" rx="22" ry="9" transform="rotate(40,1550,160)"/>
+  </g>
+</svg>

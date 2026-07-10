@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="600" viewBox="0 0 1920 600">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2d6a4f"/>
+      <stop offset="50%" style="stop-color:#52b788"/>
+      <stop offset="100%" style="stop-color:#2d6a4f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <!-- Green gradient background -->
+  <rect width="1920" height="600" fill="url(#bg4)"/>
+  <!-- Center glow -->
+  <circle cx="960" cy="300" r="350" fill="url(#glow)"/>
+  <!-- Decorative gold lines -->
+  <g stroke="#d4af37" stroke-width="0.5" opacity="0.15">
+    <line x1="0" y1="100" x2="1920" y2="100"/>
+    <line x1="0" y1="500" x2="1920" y2="500"/>
+  </g>
+  <!-- Corner botanical -->
+  <g opacity="0.06">
+    <path d="M0,600 Q150,450 0,300 Q180,420 100,600Z" fill="#ffffff"/>
+    <path d="M1920,0 Q1800,150 1920,300 Q1740,180 1820,0Z" fill="#ffffff"/>
+  </g>
+  <!-- Content centered -->
+  <!-- Brand -->
+  <text x="960" y="200" font-family="'Playfair Display', 'Georgia', serif" font-size="18" fill="#d4af37" letter-spacing="8" text-anchor="middle">SPECIAL OFFER</text>
+  <text x="960" y="270" font-family="'Playfair Display', 'Georgia', serif" font-size="58" font-weight="700" fill="#ffffff" text-anchor="middle">Up to 30% Off</text>
+  <text x="960" y="330" font-family="'Poppins', 'Arial', sans-serif" font-size="20" fill="#d8f3dc" text-anchor="middle" letter-spacing="1">On All Ippeo Essential Skincare Products</text>
+  <!-- Decorative element -->
+  <g transform="translate(960,370)">
+    <line x1="-80" y1="0" x2="-20" y2="0" stroke="#d4af37" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="4" fill="#d4af37"/>
+    <line x1="20" y1="0" x2="80" y2="0" stroke="#d4af37" stroke-width="1.5"/>
+  </g>
+  <text x="960" y="425" font-family="'Poppins', 'Arial', sans-serif" font-size="14" fill="#d8f3dc" opacity="0.8" text-anchor="middle">Limited time offer. Use code: IPPEO30</text>
+  <!-- CTA -->
+  <rect x="840" y="460" width="240" height="50" rx="25" fill="#d4af37"/>
+  <text x="960" y="492" font-family="'Poppins', 'Arial', sans-serif" font-size="15" font-weight="700" fill="#1b4332" text-anchor="middle">Shop the Sale</text>
+  <!-- Decorative product silhouettes -->
+  <g opacity="0.06" fill="#ffffff">
+    <rect x="150" y="300" width="60" height="180" rx="18"/>
+    <rect x="162" y="268" width="36" height="40" rx="8"/>
+    <rect x="350" y="320" width="50" height="160" rx="15"/>
+    <rect x="360" y="290" width="30" height="35" rx="7"/>
+    <rect x="1450" y="300" width="60" height="180" rx="18"/>
+    <rect x="1462" y="268" width="36" height="40" rx="8"/>
+    <rect x="1550" y="320" width="50" height="160" rx="15"/>
+    <rect x="1560" y="290" width="30" height="35" rx="7"/>
+  </g>
+</svg>
