@@ -111,22 +111,6 @@
                 </div>
             </div>
             
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label class="form-label">Twitter URL</label>
-                        <input type="url" class="form-control" name="settings[twitter_url]" 
-                               value="{{ $settings['twitter_url'] ?? '' }}">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="mb-3">
-                        <label class="form-label">Pinterest URL</label>
-                        <input type="url" class="form-control" name="settings[pinterest_url]" 
-                               value="{{ $settings['pinterest_url'] ?? '' }}">
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     

@@ -32,16 +32,14 @@
         <!-- Top Bar -->
         <div class="top-bar bg-green-dark text-white py-2">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    <div>
                         <small><i class="fas fa-envelope me-2"></i><a href="mailto:{{ App\Models\SiteSetting::get('contact_email', 'info@ippeo.in') }}" class="text-white text-decoration-none">{{ App\Models\SiteSetting::get('contact_email', 'info@ippeo.in') }}</a></small>
                         <small class="ms-3"><i class="fas fa-phone me-2"></i><a href="tel:{{ App\Models\SiteSetting::get('contact_phone', '+917498686978') }}" class="text-white text-decoration-none">{{ App\Models\SiteSetting::get('contact_phone', '+91 74986 86978') }}</a></small>
                     </div>
-                    <div class="col-md-6 text-end">
-                        <a href="#" class="text-white me-2"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-pinterest"></i></a>
+                    <div>
+                        <a href="{{ App\Models\SiteSetting::get('facebook_url', '#') }}" class="text-white me-2" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="{{ App\Models\SiteSetting::get('instagram_url', '#') }}" class="text-white" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -58,10 +56,48 @@
                         <i class="fas fa-leaf me-2"></i>{{ config('app.name') }}
                     @endif
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+
+                <!-- Mobile Offcanvas Menu -->
+                <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+                    <div class="offcanvas-header bg-green-dark text-white">
+                        <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+                    </div>
+                    <div class="offcanvas-body p-0">
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a class="d-block px-4 py-3 border-bottom nav-link fw-medium" href="{{ route('home') }}">Home</a>
+                            </li>
+                            <li>
+                                <a class="d-block px-4 py-3 border-bottom nav-link fw-medium" href="{{ route('products.index') }}">Products</a>
+                            </li>
+                            <li>
+                                <a class="d-block px-4 py-3 border-bottom nav-link fw-medium" href="{{ route('blog.index') }}">Blog</a>
+                            </li>
+                            <li>
+                                <a class="d-block px-4 py-3 border-bottom nav-link fw-medium" href="{{ route('about') }}">About</a>
+                            </li>
+                            <li>
+                                <a class="d-block px-4 py-3 border-bottom nav-link fw-medium" href="{{ route('contact') }}">Contact</a>
+                            </li>
+                            <li>
+                                <a class="d-block px-4 py-3 border-bottom nav-link fw-medium" href="{{ route('faq') }}">FAQ</a>
+                            </li>
+                        </ul>
+                        <div class="p-4">
+                            <form class="d-flex" action="{{ route('search') }}" method="GET" onsubmit="if(document.querySelector('.offcanvas.show')){bootstrap.Offcanvas.getInstance(document.getElementById('navbarOffcanvas')).hide()}">
+                                <input class="form-control me-2 flex-grow-1" type="search" name="q" placeholder="Search products..." required>
+                                <button class="btn btn-green" type="submit"><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}">Home</a>
@@ -122,13 +158,11 @@
                     <h5 class="fw-bold mb-3">{{ config('app.name') }}</h5>
                     <p>{{ App\Models\SiteSetting::get('footer_about', 'Premium natural cosmetic products for your beauty care.') }}</p>
                     <div class="social-links mt-3">
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-pinterest fa-lg"></i></a>
+                        <a href="{{ App\Models\SiteSetting::get('facebook_url', '#') }}" class="text-white me-3" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="{{ App\Models\SiteSetting::get('instagram_url', '#') }}" class="text-white" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
                     </div>
                 </div>
-                <div class="col-md-2 mb-4">
+                <div class="col-6 col-md-2 mb-4">
                     <h6 class="fw-bold mb-3">Quick Links</h6>
                     <ul class="list-unstyled">
                         <li><a href="{{ route('home') }}" class="text-white-50">Home</a></li>
@@ -137,7 +171,7 @@
                         <li><a href="{{ route('about') }}" class="text-white-50">About Us</a></li>
                     </ul>
                 </div>
-                <div class="col-md-2 mb-4">
+                <div class="col-6 col-md-2 mb-4">
                     <h6 class="fw-bold mb-3">Support</h6>
                     <ul class="list-unstyled">
                         <li><a href="{{ route('contact') }}" class="text-white-50">Contact</a></li>

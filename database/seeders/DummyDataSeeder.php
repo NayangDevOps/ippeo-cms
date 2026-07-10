@@ -632,8 +632,6 @@ class DummyDataSeeder extends Seeder
             ['key' => 'contact_address', 'value' => "123 Beauty Street\nNew York, NY 10001\nUnited States", 'type' => 'textarea', 'group' => 'contact'],
             ['key' => 'facebook_url', 'value' => 'https://facebook.com/greenbeauty', 'type' => 'text', 'group' => 'social'],
             ['key' => 'instagram_url', 'value' => 'https://instagram.com/greenbeauty', 'type' => 'text', 'group' => 'social'],
-            ['key' => 'twitter_url', 'value' => 'https://twitter.com/greenbeauty', 'type' => 'text', 'group' => 'social'],
-            ['key' => 'pinterest_url', 'value' => 'https://pinterest.com/greenbeauty', 'type' => 'text', 'group' => 'social'],
             ['key' => 'meta_title', 'value' => 'Green Beauty - Natural Organic Cosmetics', 'type' => 'text', 'group' => 'seo'],
             ['key' => 'meta_description', 'value' => 'Shop premium natural skincare, haircare, and body care products. Organic, vegan, and cruelty-free beauty essentials.', 'type' => 'textarea', 'group' => 'seo'],
             ['key' => 'meta_keywords', 'value' => 'natural cosmetics, organic skincare, vegan beauty, cruelty-free, green beauty, face cream, serum', 'type' => 'text', 'group' => 'seo'],

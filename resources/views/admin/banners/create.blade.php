@@ -71,7 +71,7 @@
                     @endif
                     <input type="file" class="form-control @error('image') is-invalid @enderror" 
                            name="image" accept="image/*" {{ isset($banner) ? '' : 'required' }}>
-                    <small class="text-muted">Recommended: 1920x600px</small>
+                    <small class="text-muted">Recommended: 1600x500px</small>
                     @error('image') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
             </div>

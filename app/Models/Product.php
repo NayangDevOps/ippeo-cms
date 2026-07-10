@@ -27,6 +27,7 @@ class Product extends Model
         'benefits',
         'usage_guide',
         'featured_image',
+        'amazon_link',
         'is_featured',
         'is_new',
         'is_bestseller',

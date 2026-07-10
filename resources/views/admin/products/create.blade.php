@@ -146,6 +146,16 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+
+                    <div class="mb-3">
+                        <label for="amazon_link" class="form-label">Amazon Link</label>
+                        <input type="url" class="form-control @error('amazon_link') is-invalid @enderror" 
+                               id="amazon_link" name="amazon_link" value="{{ old('amazon_link') }}">
+                        <small class="text-muted">Full Amazon product URL (e.g. https://amazon.in/dp/...)</small>
+                        @error('amazon_link')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
             </div>
 

@@ -36,13 +36,13 @@
 </section>
 
 <!-- Categories Section -->
-<section class="py-5 bg-light">
+<section class="py-4 bg-light">
     <div class="container">
         <h2 class="section-title">Shop by Category</h2>
         <p class="section-subtitle">Discover our range of natural beauty products</p>
         <div class="row g-4">
             @foreach($categories as $category)
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                 <a href="{{ route('products.index', ['category' => $category->id]) }}" class="text-decoration-none">
                     <div class="category-card">
                         <img src="{{ $category->image_url }}" alt="{{ $category->name }}">
@@ -58,41 +58,42 @@
 </section>
 
 <!-- Featured Products -->
-<section class="py-5">
+<section class="py-4">
     <div class="container">
         <h2 class="section-title">Featured Products</h2>
         <p class="section-subtitle">Handpicked favorites just for you</p>
         <div class="row g-4">
             @foreach($featuredProducts as $product)
-            <div class="col-md-3 col-sm-6">
-                <div class="product-card">
-                    <div class="product-image">
-                        @if($product->isOnSale())
-                        <span class="product-badge">Sale {{ $product->discount_percentage }}%</span>
-                        @elseif($product->is_new)
-                        <span class="product-badge">New</span>
-                        @endif
-                        <img src="{{ $product->featured_image_url }}" alt="{{ $product->name }}">
-                    </div>
-                    <div class="product-body">
-                        <div class="product-category">{{ $product->category->name }}</div>
-                        <h5 class="product-title">{{ $product->name }}</h5>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="product-price">
-                                ₹{{ number_format($product->current_price, 2) }}
-                                @if($product->isOnSale())
-                                <span class="product-price-old">₹{{ number_format($product->price, 2) }}</span>
-                                @endif
-                            </div>
-                            <div class="product-rating">
-                                @for($i = 1; $i <= 5; $i++)
-                                    <i class="fas fa-star{{ $i <= $product->rating ? '' : '-o' }}"></i>
-                                @endfor
+            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                <a href="{{ route('products.show', $product->slug) }}" class="text-decoration-none">
+                    <div class="product-card">
+                        <div class="product-image">
+                            @if($product->isOnSale())
+                            <span class="product-badge">Sale {{ $product->discount_percentage }}%</span>
+                            @elseif($product->is_new)
+                            <span class="product-badge">New</span>
+                            @endif
+                            <img src="{{ $product->featured_image_url }}" alt="{{ $product->name }}">
+                        </div>
+                        <div class="product-body">
+                            <div class="product-category">{{ $product->category->name }}</div>
+                            <h5 class="product-title">{{ $product->name }}</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="product-price">
+                                    ₹{{ number_format($product->current_price, 2) }}
+                                    @if($product->isOnSale())
+                                    <span class="product-price-old">₹{{ number_format($product->price, 2) }}</span>
+                                    @endif
+                                </div>
+                                <div class="product-rating">
+                                    @for($i = 1; $i <= 5; $i++)
+                                        <i class="fas fa-star{{ $i <= $product->rating ? '' : '-o' }}"></i>
+                                    @endfor
+                                </div>
                             </div>
                         </div>
-                        <a href="{{ route('products.show', $product->slug) }}" class="btn btn-green w-100 mt-3">View Details</a>
                     </div>
-                </div>
+                </a>
             </div>
             @endforeach
         </div>
@@ -127,25 +128,26 @@
 
 <!-- New Arrivals -->
 @if($newProducts->count() > 0)
-<section class="py-5">
+<section class="py-4">
     <div class="container">
         <h2 class="section-title">New Arrivals</h2>
         <p class="section-subtitle">Fresh products, just arrived</p>
         <div class="row g-4">
             @foreach($newProducts->take(4) as $product)
-            <div class="col-md-3 col-sm-6">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="product-badge">New</span>
-                        <img src="{{ $product->featured_image_url }}" alt="{{ $product->name }}">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+                <a href="{{ route('products.show', $product->slug) }}" class="text-decoration-none">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="product-badge">New</span>
+                            <img src="{{ $product->featured_image_url }}" alt="{{ $product->name }}">
+                        </div>
+                        <div class="product-body">
+                            <div class="product-category">{{ $product->category->name }}</div>
+                            <h5 class="product-title">{{ $product->name }}</h5>
+                            <div class="product-price">₹{{ number_format($product->current_price, 2) }}</div>
+                        </div>
                     </div>
-                    <div class="product-body">
-                        <div class="product-category">{{ $product->category->name }}</div>
-                        <h5 class="product-title">{{ $product->name }}</h5>
-                        <div class="product-price">₹{{ number_format($product->current_price, 2) }}</div>
-                        <a href="{{ route('products.show', $product->slug) }}" class="btn btn-green w-100 mt-3">View Details</a>
-                    </div>
-                </div>
+                </a>
             </div>
             @endforeach
         </div>
@@ -155,13 +157,13 @@
 
 <!-- Testimonials -->
 @if($testimonials->count() > 0)
-<section class="py-5 bg-cream">
+<section class="py-4 bg-cream">
     <div class="container">
         <h2 class="section-title">What Our Customers Say</h2>
         <p class="section-subtitle">Real reviews from real people</p>
         <div class="row g-4">
-            @foreach($testimonials->take(3) as $testimonial)
-            <div class="col-md-4">
+            @foreach($testimonials as $testimonial)
+            <div class="col-md-4 col-sm-6 col-12">
                 <div class="testimonial-card">
                     <img src="{{ $testimonial->image_url }}" alt="{{ $testimonial->name }}" class="testimonial-avatar">
                     <p class="testimonial-text">"{{ $testimonial->testimonial }}"</p>
@@ -182,26 +184,6 @@
 </section>
 @endif
 
-<!-- Newsletter Section -->
-<section class="py-5 bg-green text-white">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <h3 class="fw-bold">Subscribe to Our Newsletter</h3>
-                <p>Get special offers and beauty tips delivered to your inbox</p>
-            </div>
-            <div class="col-md-6">
-                <form action="{{ route('newsletter.subscribe') }}" method="POST">
-                    @csrf
-                    <div class="input-group input-group-lg">
-                        <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
-                        <button class="btn btn-green-light" type="submit">Subscribe</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
 @endsection
 
 @push('scripts')
